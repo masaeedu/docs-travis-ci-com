@@ -96,6 +96,10 @@ language: csharp
 mono: none
 dotnet: 1.0.1
 dist: trusty
+sudo: required
+script:
+ - dotnet restore
+ - ...
 ...
 ```
 
@@ -103,7 +107,7 @@ dist: trusty
 
 The version numbers of the SDK can be found on the [.NET Core website](https://dot.net/core).
 
-You need to specify `dist: trusty` so your build will run on Ubuntu 14.04 because .NET Core doesn't work on Ubuntu 12.04 (which is the default Linux build environment on Travis right now).
+You need to specify `dist: trusty` so your build will run on Ubuntu 14.04 because .NET Core doesn't work on Ubuntu 12.04 (which is the default Linux build environment on Travis right now). Additionally, since .NET Core does not define default scripts, you should provide a script that invokes `dotnet` to build, test and publish your solution.
 
 ### Testing Against Mono and .NET Core
 
